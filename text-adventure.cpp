@@ -85,11 +85,35 @@ int florenceHealth = 17;
 
 // for loop until bear or player health drops to 0 or less. weird thing to note, mac may have issues compiling the correct numbers
 while (bearHealth >= 0){ 
+
+    srand (time(NULL));
+    int bearChoice = rand() % 3;
+    int bearAttack = rand() % 3 + 3;
+
+  if (bearChoice == 1){
+        florenceHealth = florenceHealth - bearAttack;
+        std::cout << "Florence Health after dmg: " << florenceHealth << "\n";
+    } else if (bearChoice == 2){
+        std::cout << "Test2\n";
+    } else if (bearChoice == 3){
+        std::cout << "Test3\n";
+    }
+
+
+    if (bearChoice == 1 && Isabella == true){
+       isabellaHealth = isabellaHealth  - bearAttack;
+       std::cout << "Isabella Health after dmg: " << isabellaHealth << "\n";
+    } else if (bearChoice == 2){
+        std::cout << "Test2";
+    } else if (bearChoice == 3){
+        std::cout << "Test3";
+    }
+
+
     if (Florence == true){
         while (florenceHealth >= 0){
 
             //character vars
-                srand (time(NULL));
                 int florenceAttack = rand() % 7;
 
             //user select    
@@ -101,7 +125,8 @@ while (bearHealth >= 0){
                     std::cout << " 5) Flee \n";
                     std::cout << "\nSelect choice here: ";
                     std::cin >> choice;
-        //attack
+
+            //attack
             if(choice == 1){
                 std::cout << "\nYou chose Attack!\n";
                 bearHealth = bearHealth - florenceAttack;
@@ -122,6 +147,18 @@ while (bearHealth >= 0){
             } else {
                 std::cout << "\nInvalid Choice! Defending.\n\n";
             }
+
+
+            //bear attack
+              if (bearChoice == 1){
+              florenceHealth = florenceHealth - bearAttack;
+              std::cout << "Florence Health after dmg: " << florenceHealth;
+              } else if (bearChoice == 2){
+              std::cout << "Test2";
+              } else if (bearChoice == 3){
+              std::cout << "Test3";
+              }
+
         }
     } else if (Isabella == true){
         while (isabellaHealth >= 0){
@@ -162,8 +199,6 @@ successful 1/3 chance.)*/
             } else {
                 std::cout << "\nInvalid Choice! Defending.\n\n";
             }
-
-
         }
     }
 }
