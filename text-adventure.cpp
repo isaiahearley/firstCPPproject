@@ -83,7 +83,7 @@ int isabellaHealth = 23;
 int florenceHealth = 17;
 
 
-// for loop until bear or player health drops to 0 or less.
+// for loop until bear or player health drops to 0 or less. weird thing to note, mac may have issues compiling the correct numbers
 while (bearHealth >= 0){ 
     if (Florence == true){
         while (florenceHealth >= 0){
@@ -93,28 +93,32 @@ while (bearHealth >= 0){
                 int florenceAttack = rand() % 7;
 
             //user select    
-                    std::cout << "Health: " << florenceHealth << "    DMG: 0-7\n\n";
+                    std::cout << "Player Health: " << florenceHealth << "    Player DMG: 0-7 " << "                    Enemy Health: " << bearHealth << "\n\n";
                     std::cout << " 1) Attack \n";
                     std::cout << " 2) Defend \n";
                     std::cout << " 3) Adrenaline \n";
                     std::cout << " 4) Items \n";
                     std::cout << " 5) Flee \n";
-                    std::cout << "Select choice here: ";
+                    std::cout << "\nSelect choice here: ";
                     std::cin >> choice;
         //attack
             if(choice == 1){
                 std::cout << "\nYou chose Attack!\n";
                 bearHealth = bearHealth - florenceAttack;
-                std::cout << "You did " << florenceAttack << " damage to the enemy!\n\n";
-                std::cout << bearHealth << "\n";
+
+                if(florenceAttack == 0) {
+                    std::cout << "\nYou missed!\n\n";
+                } else if (florenceAttack > 0){
+                    std::cout << "\nYou did " << florenceAttack << " damage to the enemy!\n\n";
+                }
             } else if (choice == 2){
-                std::cout << "\nYou chose defend!\n";   
+                std::cout << "\nYou chose defend!\n\n";   
             } else if (choice == 3){
-                std::cout << "\nYou chose Adreneline!\n";
+                std::cout << "\nYou chose Adreneline!\n\n";
             } else if (choice == 4){
-                std::cout << "\nItem Select\n";
+                std::cout << "\nItem Select\n\n";
             } else if (choice == 5){
-                std::cout << "\nYou chose Flee!\n";
+                std::cout << "\nYou chose Flee!\n\n";
             } else {
                 std::cout << "\nInvalid Choice! Defending.\n\n";
             }
@@ -133,28 +137,28 @@ successful 1/3 chance.)*/
                 int isabellaAttack = rand() % 4 + 2;
 
             //user select    
-                    std::cout << "Health: " << isabellaHealth << "     DMG : 0-5\n\n";
+                    std::cout << "Player Health: " << isabellaHealth << "     Player DMG : 0-5" << "                     Enemy Health: " << bearHealth << "\n\n";
                     std::cout << " 1) Attack \n";
                     std::cout << " 2) Defend \n";
                     std::cout << " 3) Infatuate \n";
                     std::cout << " 4) Items \n";
                     std::cout << " 5) Flee \n";
-                    std::cout << "Select choice here: ";
+                    std::cout << "\nSelect choice here: ";
                     std::cin >> choice;
 
         //attack
             if (choice == 1){
                 bearHealth = bearHealth - isabellaAttack;
                 std::cout << "\nYou did " << isabellaAttack << " damage to the enemy!\n";
-                std::cout << bearHealth << "\n";
+             std::cout << "                                                       Enemy Health: "<< bearHealth << "\n";
             } else if (choice == 2){
-                std::cout << "\nYou chose defend!\n";   
+                std::cout << "\nYou chose defend!\n\n";   
             } else if (choice == 3){
-                std::cout << "\nYou chose Infatuate!\n";
+                std::cout << "\nYou chose Infatuate!\n\n";
             } else if (choice == 4){
-                std::cout << "\nItem Select\n";
+                std::cout << "\nItem Select\n\n";
             } else if (choice == 5){
-                std::cout << "\nYou chose Flee!\n";
+                std::cout << "\nYou chose Flee!\\n";
             } else {
                 std::cout << "\nInvalid Choice! Defending.\n\n";
             }
