@@ -16,9 +16,9 @@ int Isabella;
 //instructions
 std::cout << "\n\nWelcome to my text-adventure.\n" 
           << "--------------------------------\n"
-          << "This game is played best using a keyboard with functional number keys.\n" 
-          << "You select numbers progressively which will ultimately effect\n"
-          << "your outcome and describe what type of person you are.\n";
+          << "This game is played best using a keyboard with functional .\n" 
+          << "number keys You select numbers progressively which will \n"
+          << "ultimately effect your outcome during the mini-game.\n";
 
 
 
@@ -26,6 +26,7 @@ std::cout << "\n\nWelcome to my text-adventure.\n"
 std::cout << "\nSelect a character: \n";
 std::cout << "1) Florence       " << "2) Isabella\n";
 std::cout << "--------------------------------\n";
+std::cout << "Select character with keys 1  or  2: ";
 std::cin >> main_char;
 
     if (main_char == 1){
@@ -39,12 +40,13 @@ std::cin >> main_char;
     } else {
         std::cout << "Invalid Response. \n";
         std::cout << "Restart Application. \n";
+        return 0;
     }
 
 
 //story line
 
-std::cout << "\n--------------------------------\n";
+std::cout << "--------------------------------\n";
 std::cout << "Once upon a time ";
 // florence
 
@@ -67,48 +69,86 @@ if (Florence == true){
 //enemy encounter
 std::cout << "encountered a bear!\n\n";
 
+
+
 std::cout << "Let the battles begin! \n **FFVII 'Let the Battles Begin!'** starts playing... \n\n";
 std::cout << "----------------------------------------------------------------\n";
 std::cout << "You have 5 options you are able to use to fend off this beast...\n";
 std::cout << "----------------------------------------------------------------\n";
 
-
+srand (time(NULL));
 int choice; 
-int Bear = 30;
+int bearHealth = 30;
+int bearAttack = rand() % 8 + 1; 
+
 int isabellaHealth = 23;
+int isabellaAttack = rand() % 3 + 2;
+
 int florenceHealth = 17;
-// for loop until bear health drops to 0 or less.
+int florenceAttack = rand() % 7;
+
+// for loop until bear or player health drops to 0 or less.
+while (bearHealth >= 0){
 
 
+    srand (time(NULL));
 
-if (Florence == true){
-while (Bear = 30 && florenceHealth > 17){
-    //battle abilities
-        if(Florence == true){
-            std::cout << "Health: " << florenceHealth << "    DMG: 3-4\n\n";
-            std::cout << " 1) Attack \n";
-            std::cout << " 2) Defend \n";
-            std::cout << " 3) Adrenaline \n";
-            std::cout << " 4) Items \n";
-            std::cout << " 5) Flee \n";
-            std::cout << "Select choice here: ";
-            std::cin >> choice;
-        } 
-    }
-} else if (Isabella == true){
-while (Bear = 30 && isabellaHealth > 17){
-    if (Isabella == true){
-            std::cout << "Health: " << isabellaHealth << "     DMG : 1-2\n\n";
-            std::cout << " 1) Attack \n";
-            std::cout << " 2) Defend \n";
-            std::cout << " 3) Infatuate \n";
-            std::cout << " 4) Items \n";
-            std::cout << " 5) Flee \n";
-            std::cout << "Select choice here: ";
-            std::cin >> choice;
+
+    if (Florence == true){
+        while (florenceHealth != 0){
+            if(Florence == true){
+                    std::cout << "Health: " << florenceHealth << "    DMG: 1-7\n\n";
+                    std::cout << " 1) Attack \n";
+                    std::cout << " 2) Defend \n";
+                    std::cout << " 3) Adrenaline \n";
+                    std::cout << " 4) Items \n";
+                    std::cout << " 5) Flee \n";
+                    std::cout << "Select choice here: ";
+                    std::cin >> choice;
+
+                if(choice == 1){
+                    std::cout << "\nYou chose Attack!\n";
+                    bearHealth = bearHealth - florenceAttack;
+                    std::cout << "You did " << florenceAttack << " damage to the enemy!\n\n";
+                    std::cout << bearHealth << "\n";
+                } 
+            } 
+        }
+    } else if (Isabella == true){
+    while (isabellaHealth != 0){
+        if (Isabella == true){
+                std::cout << "Health: " << isabellaHealth << "     DMG : 2-3\n\n";
+                std::cout << " 1) Attack \n";
+                std::cout << " 2) Defend \n";
+                std::cout << " 3) Infatuate \n";
+                std::cout << " 4) Items \n";
+                std::cout << " 5) Flee \n";
+                std::cout << "Select choice here: ";
+                std::cin >> choice;
+            }
         }
     }
+//attack 
+    if (choice == 1 && Isabella == true) {
+        std::cout << "\nYou did " << isabellaAttack << "to the enemy!\n";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
 
 
 
