@@ -85,11 +85,11 @@ std::cout << "----------------------------------------------------------------\n
 
 int choice; 
 int itemSelect; 
-int bearHealth = 115;
+int bearHealth = 250;
 int isabellaHealth = 25;
 int florenceHealth = 20;
-int potion = 10;
-int hiPotion = 20;
+int potion = 3;
+int hiPotion = 6;
 int potionAmount = 2;
 int hiPotionAmount = 1; 
 int berserkPotionAmount = 2;
@@ -106,11 +106,11 @@ while (Florence == true){
 
     // RNG 
     srand(time(NULL));
-    int florenceAttack = rand() % 7;
+    int florenceAttack = rand() % 7 + 4;
     int bearChoice = rand() % 4 + 1;
-    int bearAttack = rand() % 2 + 3;
+    int bearAttack = (rand() % 4) * 3;
     int defendAmount = rand() % 5 + 2;
-    int berries = rand() % 6 + 1;
+    int berries = rand() % 6 + 4;
     int fleeChance = rand() % 40;
     
 
@@ -231,10 +231,17 @@ while (Florence == true){
             std::cout << "\nBear healed by " << berries << " health!\n";
             } else if (bearChoice == 4){
             std::cout << "\nBear found random berries! Munch Munch Munch... \n";
+            berries = berries - 3;
             bearHealth = bearHealth - berries;
             std::cout << "\nBear damaged by " << berries << " health!\n";
             }
 
+        
+                 if(bearHealth <= 0){
+                    std::cout << "\nYou win!\n";
+                    std::cout << "Florence did a total of " << total << " damage!\n";
+                    break;
+                    } 
 
         if (florenceHealth <= 0){
             std::cout << "\nYou lose...\n";
@@ -257,18 +264,21 @@ while (Florence == true){
         }
 
          std::cout << "\n---------------------------\n\n";      
+         if(florenceHealth < 10){
+            std::cout << "You're low on HP!\n\n";
+         }
 }
 while (Isabella == true){
 
     // RNG 
     srand(time(NULL));
-    int isabellaAttack = rand() % 5;
+    int isabellaAttack = rand() % 5 + 4;
     int bearChoice = rand() % 4 + 1;
     int bearAttack = rand() % 3 + 3;
     int defendAmount = rand() % 5 + 2;
     int berries = rand() % 8 + 1;
     int fleeChance = rand() % 40;
-    int poisonMolotov = (rand() % 5) + 1 * 5;
+    int poisonMolotov = (rand() % 6) * 5 + 1;
 
             //user select    
                     std::cout << "Player Health: " << isabellaHealth << "     Player DMG : 0-5" << "                     Enemy Health: " << bearHealth << "\n\n";
@@ -340,24 +350,21 @@ while (Isabella == true){
             total = total + isabellaAttack;
         } else if(bearHealth <= 0){
                 std::cout << "\nYou win!\n";
-                std::cout << "Isabella did a total of " << total << " damage";
+                std::cout << "Isabella did a total of " << total << " damage\n";
                 break;
             } 
 
-     if (bearChoice == 1){
-                if(bearBerserk == true){
-                bearAttack = bearAttack * 2;
+      if (bearChoice == 1){
+               if(bearBerserk == true){
+                bearAttack * 2;
+               } else if (defend == true){
+                bearAttack / 2;
+               } else {
+                bearAttack;
+               }
                 isabellaHealth = isabellaHealth - bearAttack;
                 std::cout << "\nBear Attacked! You took " << bearAttack << " damage!\n";
-                } else if (bearBerserk == false){
-                    if(defend == false){
-                        isabellaHealth = isabellaHealth - bearAttack;
-                    } else if (defend == true){
-                        bearAttack = bearAttack - defendAmount;
-                        isabellaHealth = isabellaHealth - bearAttack;
-                    }
-                std::cout << "\nBear Attacked! You took " << bearAttack << " damage!\n";
-                }
+                
             } else if (bearChoice == 2){
             std::cout << "\nBear is enraged! Increased chance for crit.\n";
             bearBerserk = true;
